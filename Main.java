@@ -4,7 +4,7 @@ public class Main {
 
     public static int taxEarnings(int earnings, int spending) {
         int tax = earnings * 6 / 100;
-        if (tax >=0) {
+        if (tax >= 0) {
             return tax;
         } else {
             return 0;
@@ -45,33 +45,33 @@ public class Main {
                 switch (operation) {
                     case 1:
                         System.out.println("Введите сумму дохода:");
-                        String incInput = sc.nextLine();
-                        int income = Integer.parseInt(incInput);
+                        String incomeInput = sc.nextLine();
+                        int income = Integer.parseInt(incomeInput);
                         earnings += income;
                         break;
                     case 2:
                         System.out.println("Введите сумму расходов:");
-                        String spInput = sc.nextLine();
-                        int spent = Integer.parseInt(spInput);
+                        String spentInput = sc.nextLine();
+                        int spent = Integer.parseInt(spentInput);
                         spending += spent;
                         break;
                     case 3:
 
-                        int x = taxEarnings(earnings,spending);
-                        int y = taxEarningsMinusSpending(earnings,spending);
+                        int taxEarnings = taxEarnings(earnings, spending);
+                        int taxEarningsMinusSpending = taxEarningsMinusSpending(earnings, spending);
 
-                        if (x < y) {
+                        if (taxEarnings < taxEarningsMinusSpending) {
                             System.out.println("Мы советуем вам 'УСН доходы'");
-                            System.out.println("Ваш налог составит: " + x + " руб.");
-                            System.out.println("Налог на другой системе: " + y + " руб.");
-                            System.out.println("Экономия: " + (y - x) + " руб.");
-                        } else if (x > y) {
+                            System.out.println("Ваш налог составит: " + taxEarnings + " руб.");
+                            System.out.println("Налог на другой системе: " + taxEarningsMinusSpending + " руб.");
+                            System.out.println("Экономия: " + (taxEarningsMinusSpending - taxEarnings) + " руб.");
+                        } else if (taxEarnings > taxEarningsMinusSpending) {
                             System.out.println("Мы советуем вам 'УСН доходы минус расходы'");
-                            System.out.println("Ваш налог составит: " + y + " руб.");
-                            System.out.println("Налог на другой системе: " + x + " руб.");
-                            System.out.println("Экономия: " + (x - y) + " руб.");
+                            System.out.println("Ваш налог составит: " + taxEarningsMinusSpending + " руб.");
+                            System.out.println("Налог на другой системе: " + taxEarnings + " руб.");
+                            System.out.println("Экономия: " + (taxEarnings - taxEarningsMinusSpending) + " руб.");
                         } else {
-                            System.out.println("Налоги равны: " + x + " руб. Можете выбрать любой УСН.");
+                            System.out.println("Налоги равны: " + taxEarnings + " руб. Можете выбрать любой УСН.");
                         }
                         break;
                     default:
